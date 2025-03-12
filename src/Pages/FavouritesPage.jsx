@@ -39,13 +39,13 @@ const FavouritesPage = () => {
   :
   <div className="container mx-auto">
     <div className="flex items-center justify-between mt-4 pb-2 border-b border-zinc-300 mb-10">
-      <p className="font-semibold">FAVORİLERİM ({wishlistCount} Ürün)</p>
+      <h2 className="tracking-wider">FAVORİLERİM ({wishlistCount} Ürün)</h2>
       <button onClick={() => clearWishlist()} className="bg-black text-white px-5 py-2 cursor-pointer">Temizle</button>
     </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-y-8 gap-x-20 ">
         {wishlist.map((value) => {
           const isDiscount = value.discountRate >= 10 ? true : false;
-          const discountedPrice = isDiscount ? ((value.price / 100) * (100 - value.discountRate)).toFixed(2) : value.price;
+          const discountedPrice = isDiscount ? ((value.price / 100) * (100 - value.discountRate)) : value.price;
             return (
                  <div className="w-110 bg-white relative overflow-hidden" key={value.id}>
                         {value.isNew && (
@@ -89,15 +89,15 @@ const FavouritesPage = () => {
                             </div>
                             <div className="flex flex-col">
                               <span className="text-zinc-500 line-through mr-2">
-                                {value.price} TL
+                                {value.price.toLocaleString()} TL
                               </span>
-                              <span className="text-lg font-semibold">{discountedPrice} TL</span>
+                              <span className="text-lg font-semibold">{discountedPrice.toLocaleString()} TL</span>
                             </div>
                           
                           </div> 
                           : 
                           <div className="">
-                            <span className="text-lg font-semibold">{value.price} TL</span>
+                            <span className="text-lg font-semibold">{value.price.toLocaleString()} TL</span>
                           </div>
                           }
                         </div>

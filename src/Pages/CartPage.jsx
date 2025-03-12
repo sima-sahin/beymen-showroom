@@ -7,6 +7,7 @@ import { useDiscountedPrice } from "../store/store";
 import { HiOutlineTrash } from "react-icons/hi2";
 import { LiaShippingFastSolid } from "react-icons/lia";
 import PaymentDetails from "../Components/PaymentDetails";
+import YourFavorites from "../Components/YourFavorites";
 
 
 const CartPage = () => {
@@ -33,16 +34,20 @@ const CartPage = () => {
     {cart.length === 0 ? (
       <>
         <div className="mx-auto mt-25 mb-8 text-center text-xl">SEPETİN BOŞ</div>
-        <div className="mx-auto mb-30 text-center">
+        <div className="mx-auto mb-20 text-center">
           <button className="bg-black text-white py-3 px-6 cursor-pointer" onClick={() => navigate("/")}>
             ALIŞVERİŞE BAŞLA
           </button>
         </div>
+        <div className="flex justify-center px-34">
+          <YourFavorites/>
+        </div>
+
       </>
     ) : (
-      <div className="container mx-auto mb-18 px-16">
+      <div className="container mx-auto mb-18 px-18">
         <div className="flex items-center justify-between mt-4 pb-2 border-b border-zinc-300 mb-4">
-          <p className="font-semibold">SEPETİM ({cartCount} Ürün)</p>
+          <h2 className="tracking-wider">SEPETİM ({cartCount} Ürün)</h2>
           <button onClick={clearCart} className="bg-black text-white px-5 py-2 cursor-pointer">
             Temizle
           </button>
@@ -50,17 +55,17 @@ const CartPage = () => {
 
         <div className="flex flex-row mx-auto w-full">
           {/* SOL SÜTUN - ÜRÜNLER */}
-          <div className="flex flex-col w-3/5">
-            {Object.entries(groupedCart).map(([brand, items]) => (
+          <div className="flex flex-col w-5/8">
+            {Object.entries(groupedCart).reverse().map(([brand, items]) => (
               <div key={brand} className="border border-zinc-200 my-3 p-4">
                 {/* Marka Başlığı */}
-                <div className="border-b border-zinc-200 pb-2 px-2 flex items-center text-sm mb-3">
+                <div className="border-b border-zinc-200 pb-2 px-2 flex items-center text-sm mb-3 text-zinc-600">
                   <LiaShippingFastSolid className="text-lg mr-1" />
                   <span className="font-semibold mr-1">{brand}</span> tarafından gönderilecektir.
                 </div>
 
                 {/* Aynı markaya ait ürünler */}
-                {items.map((item) => {
+                {items.reverse().map((item) => {
                   const isDiscount = item.discountRate >= 10;
                   const discountedPrice = isDiscount ? (item.price / 100) * (100 - item.discountRate) : item.price;
                   const isSize = item.size.length > 0;
@@ -156,8 +161,8 @@ const CartPage = () => {
           </div>
 
           {/* SAĞ SÜTUN - ÖDEME DETAYLARI */}
-          <div className="flex flex-col w-2/5">
-            <div className="bg-white p-6 bg-zinc-100 w-full max-w-sm ml-18 mt-4">
+          <div className="flex flex-col w-3/8">
+            <div className="bg-white p-6 bg-zinc-100 w-full max-w-sm ml-10 mt-4">
               <h2 className="text-lg font-semibold border-b border-zinc-200 pb-2 mb-2">SİPARİŞ ÖZETİ</h2>
               
               <div className="flex justify-between text-sm py-2">
@@ -186,13 +191,17 @@ const CartPage = () => {
             </div>
 
 
-             <div className="mx-4">
+             <div className="ml-10">
               <PaymentDetails/>
             </div>
 
 
           </div>
+          
         </div>
+
+        <YourFavorites/>
+
       </div>
     )}
   </>
