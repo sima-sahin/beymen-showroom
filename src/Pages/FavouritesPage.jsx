@@ -1,9 +1,9 @@
-import useCartStore from "../store/store";
+import useCartStore from "../store/cartStore";
 import { IoIosHeart } from "react-icons/io";
 import { HiOutlineShoppingBag } from "react-icons/hi2";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { useWishlistCount } from "../store/store";
+import { useWishlistCount } from "../store/cartStore";
 
 const FavouritesPage = () => {
   const { addToCart, removeFromWishlist, wishlist, clearWishlist } = useCartStore();

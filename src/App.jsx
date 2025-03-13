@@ -7,6 +7,8 @@ import CollectionPage from './Pages/CollectionPage';
 import DetailsPage from './Pages/DetailsPage';
 import CartPage from "./Pages/CartPage";
 import FavouritesPage from "./Pages/FavouritesPage";
+import LogInPage from './Pages/LoginPage';
+import SignUpPage from './Pages/SignupPage';
 // import { useEffect } from "react";
 
 
@@ -59,6 +61,8 @@ function App() {
 
         <Route path="/sepet" element={<CartPage />} />
         <Route path="/favoriler" element={<FavouritesPage />} />
+        <Route path="/kaydol" element={<SignUpPage />} />
+        <Route path="/giris-yap" element={<LogInPage />} />
 
         <Route path="/:slug" element={<DetailsPage/>} />
 

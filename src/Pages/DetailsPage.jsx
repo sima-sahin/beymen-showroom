@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import database from "../store/database";
-import useCartStore from "../store/store";
+import useCartStore from "../store/cartStore";
 import { HiOutlineShoppingBag } from "react-icons/hi";
 import { IoIosHeart, IoIosHeartEmpty } from "react-icons/io";
 import ProductDetailExtra from "../Components/ProductDetailExtra";

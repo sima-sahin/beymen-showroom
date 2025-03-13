@@ -1,4 +1,4 @@
-import useCartStore from "../store/store";
+import useCartStore from "../store/cartStore";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 

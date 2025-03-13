@@ -1,4 +1,4 @@
-import useCartStore from "../store/store";
+import useCartStore from "../store/cartStore";
 import { IoIosHeartEmpty } from "react-icons/io";
 import { IoIosHeart } from "react-icons/io";
 import { HiOutlineShoppingBag } from "react-icons/hi2";

@@ -1,9 +1,9 @@
-import useCartStore from "../store/store";
+import useCartStore from "../store/cartStore";
 import { useNavigate } from "react-router-dom";
-import { useCartCount } from "../store/store";
-import { useTotalPrice } from "../store/store";
-import { useShippingCost } from "../store/store";
-import { useDiscountedPrice } from "../store/store";
+import { useCartCount } from "../store/cartStore";
+import { useTotalPrice } from "../store/cartStore";
+import { useShippingCost } from "../store/cartStore";
+import { useDiscountedPrice } from "../store/cartStore";
 import { HiOutlineTrash } from "react-icons/hi2";
 import { LiaShippingFastSolid } from "react-icons/lia";
 import PaymentDetails from "../Components/PaymentDetails";

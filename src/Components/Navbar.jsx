@@ -5,8 +5,7 @@ import { IoIosHeartEmpty } from "react-icons/io";
 import { RxPerson } from "react-icons/rx";
 import { HiOutlineShoppingBag } from "react-icons/hi2";
 import CategoriesNav from "./CategoriesNav";
-import { useCartCount, useWishlistCount } from "../store/store";
-
+import { useCartCount, useWishlistCount } from "../store/cartStore";
 
 
 const Navbar = () => {
@@ -45,7 +44,7 @@ const Navbar = () => {
             </div>
 
             <div className="navbar-end space-x-10 text-sm mr-3">
-                <Link to="/profil">
+                <Link to="/giris-yap">
                     <div className="flex flex-col items-center">
                     <RxPerson className="text-2xl mb-1" />
                     <span className="text-xs text-zinc-600">Hesabım</span>
