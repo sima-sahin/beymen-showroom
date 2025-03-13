@@ -4,20 +4,24 @@ import BeymenLogo from "../assets/BANNERS/beymen-logo-dot-blue.png";
 import { IoIosHeartEmpty } from "react-icons/io";
 import { RxPerson } from "react-icons/rx";
 import { HiOutlineShoppingBag } from "react-icons/hi2";
+import { IoSearchSharp } from "react-icons/io5";
 import CategoriesNav from "./CategoriesNav";
 import { useCartCount, useWishlistCount } from "../store/cartStore";
+import useAuthStore from "../store/userStore";
 
 
 const Navbar = () => {
 
+    const { currentUser } = useAuthStore();
     const navigate = useNavigate();
     const cartCount = useCartCount();
     const wishlistCount = useWishlistCount();
 
-  return (
-    <header>
 
-        <div className="w-full py-2 bg-white border-b border-gray-200 px-4">
+  return (
+    <header className="border-b border-zinc-200">
+
+        <div className="w-full py-2 bg-white border-b border-zinc-200 px-4">
             <nav className="flex space-x-7 text-xs justify-end mr-4">
                 <Link to="/" className="custom-link-top">Repair</Link>
                 <Link to="/" className="custom-link-top">Sipariş Takibi</Link>
@@ -28,23 +32,24 @@ const Navbar = () => {
             </nav>
         </div>
 
-        <div className="navbar bg-white border-b border-gray-200 px-4 text-black py-4">
-            <div className="navbar-start ml-8 cursor-pointer">
+        <div className="navbar bg-white border-b border-zinc-200 px-4 text-black py-4">
+            <div className="navbar-start ml-6 cursor-pointer">
             <img src={BeymenLogo} alt="Beymen" onClick={()=>navigate("/")}/>
             </div>
 
             <div className="navbar-center hidden md:flex">
-                <div className="form-control">
+                <div className="form-control relative">
+                <IoSearchSharp className="text-xl top-3 right-4 absolute text-zinc-600"/>
                 <input
                     type="text"
                     placeholder="Ürün, Marka Arayın"
-                    className="border border-zinc-400 p-2 outline-none w-full md:w-96 text-sm"
+                    className="border border-zinc-400 p-3 outline-none w- md:w-96 text-sm"
                 />
                 </div>
             </div>
 
             <div className="navbar-end space-x-10 text-sm mr-3">
-                <Link to="/giris-yap">
+                <Link to={currentUser ? "/hesabim" : "/giris-yap"}>
                     <div className="flex flex-col items-center">
                     <RxPerson className="text-2xl mb-1" />
                     <span className="text-xs text-zinc-600">Hesabım</span>

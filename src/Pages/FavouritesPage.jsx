@@ -27,6 +27,9 @@ const FavouritesPage = () => {
     addToCart({ ...product, selectedSize: sizeToAdd });
   };
 
+  const latestWishlistItems = [...wishlist].reverse();
+
+
   return (
    <>
     {wishlist.length === 0 ?
@@ -43,7 +46,7 @@ const FavouritesPage = () => {
       <button onClick={() => clearWishlist()} className="bg-black text-white px-5 py-2 cursor-pointer">Temizle</button>
     </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-y-8 gap-x-20 ">
-        {wishlist.map((value) => {
+        {latestWishlistItems.map((value) => {
           const isDiscount = value.discountRate >= 10 ? true : false;
           const discountedPrice = isDiscount ? ((value.price / 100) * (100 - value.discountRate)) : value.price;
             return (
@@ -96,7 +99,7 @@ const FavouritesPage = () => {
                           
                           </div> 
                           : 
-                          <div className="">
+                          <div className="my-6">
                             <span className="text-lg font-semibold">{value.price.toLocaleString()} TL</span>
                           </div>
                           }

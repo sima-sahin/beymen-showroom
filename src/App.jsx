@@ -1,5 +1,5 @@
 import './App.css';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import HomePage from './Pages/HomePage';
 import Navbar from "./Components/Navbar";
 import Footer from "./Components/Footer";
@@ -9,10 +9,18 @@ import CartPage from "./Pages/CartPage";
 import FavouritesPage from "./Pages/FavouritesPage";
 import LogInPage from './Pages/LoginPage';
 import SignUpPage from './Pages/SignupPage';
-// import { useEffect } from "react";
+import ProfilePage from './Pages/ProfilePage';
+import useAuthStore from './store/userStore';
+import AddressPage from "./Pages/User/AddressPage";
+import OrdersPage from "./Pages/User/OrdersPage";
+import UserInfoPage from "./Pages/User/UserInfoPage";
+import RebornFormPage from "./Pages/User/RebornFormPage";
+import ProductQuestionsPage from "./Pages/User/ProductQuestionsPage";
 
 
 function App() {
+
+  const { currentUser } = useAuthStore();
   
 //   useEffect(() => {
 //     localStorage.removeItem("cart-storage");
@@ -63,6 +71,14 @@ function App() {
         <Route path="/favoriler" element={<FavouritesPage />} />
         <Route path="/kaydol" element={<SignUpPage />} />
         <Route path="/giris-yap" element={<LogInPage />} />
+
+        <Route path="/hesabim" element={currentUser ? <ProfilePage /> : <Navigate to="/giris-yap" />} >
+          <Route path="siparislerim" element={<OrdersPage />} />
+          <Route path="adres-bilgilerim" element={<AddressPage />} />
+          <Route path="uyelik-bilgilerim" element={<UserInfoPage />} />
+          <Route path="reborn-basvuru" element={<RebornFormPage />} />
+          <Route path="urun-sorularim" element={<ProductQuestionsPage />} />
+        </Route>
 
         <Route path="/:slug" element={<DetailsPage/>} />
 

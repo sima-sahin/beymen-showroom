@@ -73,7 +73,7 @@ const Product = ({ value }) => {
            
           </div> 
           : 
-          <div className="">
+          <div className="mt-4">
             <span className="text-lg font-semibold">{price} TL</span>
           </div>
           }

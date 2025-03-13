@@ -14,6 +14,12 @@ const LogInPage = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
+  const [showPassword, setShowPassword] = useState(false);
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
+
     const handleSubmit = (e) => {
         e.preventDefault();
 
@@ -49,13 +55,13 @@ const LogInPage = () => {
                     <label className="block text-xs mb-1">ŞİFRENİZ *</label>
                     <div className="relative">
                     <input
-                        type="password"
+                        type={showPassword ? "text" : "password"}
                         placeholder="Lütfen şifrenizi yazınız"
                         className="w-full border px-3 py-2 text-sm"
                         onChange={(e) => setPassword(e.target.value)}
                     />
-                    <button className="absolute right-2 top-2 text-zinc-500">
-                        <FaRegEyeSlash />
+                    <button className="absolute right-2 top-2 text-zinc-500" onClick={togglePasswordVisibility}>
+                        {showPassword ? <FaRegEyeSlash size={20} /> : <FaRegEye size={20} />}
                     </button>
                     </div>
                 </div>
