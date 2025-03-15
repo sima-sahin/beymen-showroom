@@ -60,8 +60,8 @@ const LogInPage = () => {
                         className="w-full border px-3 py-2 text-sm"
                         onChange={(e) => setPassword(e.target.value)}
                     />
-                    <button className="absolute right-2 top-2 text-zinc-500" onClick={togglePasswordVisibility}>
-                        {showPassword ? <FaRegEyeSlash size={20} /> : <FaRegEye size={20} />}
+                    <button className="absolute right-2 top-2 text-zinc-500 cursor-pointer" onClick={togglePasswordVisibility} type="button">
+                        {showPassword ? <FaRegEye size={20} /> : <FaRegEyeSlash size={20} />}
                     </button>
                     </div>
                 </div>
@@ -86,10 +86,10 @@ const LogInPage = () => {
         {/* ÜYE OL */}
         <div className="bg-zinc-100 p-8 w-1/2 ml-4">
             <h2 className="text-lg mb-6 border-b border-zinc-200 pb-2">ÜYE OL</h2>
-            <p className="text-sm mb-4">
+            <p className="text-sm mb-5">
                 Beymen.com'a üye olarak birçok avantajdan faydalanabilirsiniz. Öne çıkan avantajlar;
             </p>
-            <ul className="text-sm space-y-2 px-4">
+            <ul className="text-sm space-y-3 px-4">
                 <li className="flex items-center"><TfiAnnouncement className="text-xl mr-2"/> Kampanyalardan öncelikli olarak haberdar olabilirsiniz.</li>
                 <li className="flex items-center"><TbDeviceMobileCheck className="text-2xl mr-2"/> Beymen mobil uygulamaları ile alışveriş keyfinize devam edebilirsiniz.</li>
                 <li className="flex items-center"><FaRegCreditCard className="text-xl mr-2"/> The One Card'ınızı kayıt edebilir ve puanlarınızı kullanabilirsiniz.</li>
