@@ -17,15 +17,17 @@ const DetailsPage = () => {
 
   const inWishlist = isExistInWishlist(selectedItem.id);
 
-  const isDiscount = selectedItem.discountRate >= 10 ? true : false;
+  const isDiscount = selectedItem.discountRate >= 10;
   const discountedPrice = isDiscount ? (selectedItem.price / 100) * (100 - selectedItem.discountRate) : selectedItem.price;
 
   const shoeSizes = ["36", "36.5", "37", "37.5", "38", "38.5", "39", "39.5", "40", "40.5", "41"];
   const wearSizes = ["34", "36", "38", "40", "42", "44"];
+  const beltSizes = ["60", "70", "80", "90", "100", "110"];
 
-  const isShoe = selectedItem.collection === "Ayakkabı" ? true : false;
-  const isWear = selectedItem.collection === "Giyim" ? true : false;
-  const isReborn = selectedItem.collection === "Reborn" ? true : false;
+  const isShoe = selectedItem.collection === "Ayakkabı";
+  const isWear = selectedItem.collection === "Giyim";
+  const isReborn = selectedItem.collection === "Reborn";
+  const isBelt = selectedItem.category === "Kemer";
 
   const [selectedSize, setSelectedSize] = useState("");
 
@@ -71,7 +73,7 @@ const DetailsPage = () => {
                 />
               ))}
             </div>
-            {/*  Additional */}
+
             <div className="grid grid-cols-3 gap-4 col-span-2">
             <img
               src={selectedItem.image[1]}
@@ -107,7 +109,7 @@ const DetailsPage = () => {
                 className="w-full h-auto object-cover"
               />
 
-              {/* Üçüncü resim altta tek satır (iki sütunu kaplar) */}
+              {/* Üçüncü resim altta tek satır */}
               <div className="grid grid-cols-3 gap-4 col-span-2">
                 <img
                   src={selectedItem.image[2]}
@@ -139,13 +141,13 @@ const DetailsPage = () => {
           ? 
           <div className="my-6">
             <span className="text-gray-400 line-through mr-2">
-              {selectedItem.price} TL
+              {selectedItem.price.toLocaleString()} TL
             </span>
-            <span className="text-xl font-semibold">{discountedPrice} TL</span>
+            <span className="text-xl font-semibold">{discountedPrice.toLocaleString()} TL</span>
           </div> 
           : 
           <div className="my-6">
-            <span className="text-xl font-semibold">{selectedItem.price} TL</span>
+            <span className="text-xl font-semibold">{selectedItem.price.toLocaleString()} TL</span>
           </div>
           }
 
@@ -247,6 +249,34 @@ const DetailsPage = () => {
            :
            null
           }
+          {isBelt ? (
+          <div className="my-8">
+            <h3 className="text-md mb-2">Kemer Uzunluğu: {selectedSize}</h3>
+            <div className="flex flex-wrap gap-3">
+              {beltSizes.map((size, index) => {
+                const isAvailable = selectedItem.size.includes(size);
+                return (
+                  <button
+                    key={index}
+                    onClick={() => {
+                      if (isAvailable) {
+                        handleSizeChange(size);
+                      }
+                    }}
+                    disabled={!isAvailable}
+                    className={`px-5 py-3 border text-sm transition-colors ${
+                      isAvailable
+                        ? "text-black border-zinc-400 cursor-pointer hover:bg-gray-100"
+                        : "text-gray-400 border-gray-300 cursor-not-allowed"
+                    } ${selectedSize === size ? "bg-black text-white" : ""}`}
+                  >
+                    {size}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        ) : null}
           
 
           {/* Butonlar */}

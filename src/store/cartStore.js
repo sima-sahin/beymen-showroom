@@ -73,6 +73,17 @@ const useCartStore = create(
           wishlist: state.wishlist.filter((item) => item.id !== id),
         })),
 
+      moveToCart: (product, selectedSize) =>
+        set((state) => {
+          const sizeToAdd = selectedSize || (product.size.length > 0 ? product.size[0] : null);
+          if (!sizeToAdd) return state; // Eğer beden yoksa işlem yapma.
+
+          return {
+            wishlist: state.wishlist.filter((item) => item.id !== product.id),
+            cart: [...state.cart, { ...product, selectedSize: sizeToAdd }],
+          };
+        }),
+
       clearWishlist: () => set({ wishlist: [] }),
 
       saveForLater: (productId) =>

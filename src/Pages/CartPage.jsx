@@ -190,14 +190,12 @@ const CartPage = () => {
               </button>
             </div>
 
-
              <div className="ml-10">
               <PaymentDetails/>
             </div>
 
-
           </div>
-          
+           
         </div>
 
         <YourFavorites/>

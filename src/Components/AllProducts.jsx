@@ -8,7 +8,6 @@ import { LuArrowDownAZ } from "react-icons/lu";
 
 
 const AllProducts = ({ collection }) => {
-    // const filteredItems = database.filter((value) => value.collection === collection);
     const navigate = useNavigate();
 
     const [filteredItems, setFilteredItems] = useState([]);
@@ -98,44 +97,53 @@ const AllProducts = ({ collection }) => {
 
   return (
     <>
-    <div className="flex items-center justify-between border-b border-zinc-300 pb-2 mb-8 px-6">
+    <div className="flex items-center justify-between border-b border-zinc-300 pb-2 mb-8 px-6 mt-10">
 
       <div className="flex">
       <button className="flex items-center justify-between py-3 px-4 bg-black text-white w-40 cursor-pointer font-semibold">
-          <div><LuArrowDownWideNarrow className="text-xl"/></div>
-          <div>FİLTRELER</div>
-          <div><IoIosArrowDown className="text-xl"/></div>
+          <div><LuArrowDownWideNarrow className="text-lg"/></div>
+          <div className="text-sm">FİLTRELER</div>
+          <div><IoIosArrowDown className="text-lg"/></div>
         </button>
       </div>
 
+
       <div className="flex flex-col">
-        <div className="flex items-center justify-center font-semibold tracking-wide ">
-          {/* <span className="text-xl">{filteredItems[0].category}</span>  */}
-          <span className="ml-1 text-sm">({filteredItems.length} Ürün)</span>
+        <div className="flex items-center justify-center font-semibold tracking-wide">
+          {filteredItems.length > 0 && (
+            <>
+              <span className="text-xl">{filteredItems[0]?.category || collection}</span>
+              <span className="ml-1 text-sm">({filteredItems.length} Ürün)</span>
+            </>
+          )}
         </div>
+        
         <div className="flex">
           <div className="flex items-center justify-center mt-1 text-black gap-x-1 tracking-wide">
             <div className="cursor-pointer hover:text-zinc-600" onClick={() => navigate("/")}>Ana Sayfa</div>
             <div>/</div>
-            {/* <div className="cursor-pointer hover:text-zinc-600" onClick={() => navigate(`/${collection}`)}>{filteredItems[0].collection}</div> */}
+            <div className="cursor-pointer hover:text-zinc-600" onClick={() => navigate(`/${collection}`)}>{collection}</div>
             <div>/</div>
-            {/* {filteredItems.category === "Topuklu Ayakkabı" ? <><div className="cursor-pointer hover:text-zinc-600" onClick={() => navigate("/topuklu-ayakkabı")}>{filteredItems[0].category}</div> */}
-            {/* </> : <><div className="cursor-pointer hover:text-zinc-600" onClick={() => navigate(`/${filteredItems[0].category}`)}>{filteredItems[0].category}</div> */}
-            {/* </> } */}
+            {filteredItems.length > 0 && (
+              <div className="cursor-pointer hover:text-zinc-600" onClick={() => navigate(`/${filteredItems[0]?.category || collection}`)}>
+                {filteredItems[0]?.category || collection}
+              </div>
+            )}
           </div>
         </div>
       </div>
 
+
       <div className="flex">
         <button className="flex items-center justify-between py-3 px-4 bg-black text-white w-40 cursor-pointer font-semibold">
-          <div><LuArrowDownAZ className="text-xl"/></div>
-          <div>SIRALA</div>
-          <div><IoIosArrowDown className="text-xl"/></div>
+          <div><LuArrowDownAZ className="text-lg"/></div>
+          <div className="text-sm">SIRALA</div>
+          <div><IoIosArrowDown className="text-lg"/></div>
         </button>
       </div>
 
     </div>
-      <div className="container mx-auto">
+      <div className="container mx-8">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-y-8 gap-x-20">
           {filteredItems.map((value) => {
             return <Product key={value.id} value={value} />

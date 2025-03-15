@@ -66,15 +66,15 @@ const Product = ({ value }) => {
             </div>
             <div className="flex flex-col">
               <span className="text-zinc-500 line-through mr-2">
-                {price} TL
+                {price.toLocaleString()} TL
               </span>
-              <span className="text-lg font-semibold">{discountedPrice} TL</span>
+              <span className="text-lg font-semibold">{discountedPrice.toLocaleString()} TL</span>
             </div>
            
           </div> 
           : 
           <div className="mt-4">
-            <span className="text-lg font-semibold">{price} TL</span>
+            <span className="text-lg font-semibold">{price.toLocaleString()} TL</span>
           </div>
           }
 

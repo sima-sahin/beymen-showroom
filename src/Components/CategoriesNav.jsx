@@ -3,29 +3,31 @@ import { NavLink } from "react-router-dom";
 export default function CategoriesNav() {
   // Tekrar eden sınıfları kolay okumak için bir değişkende tutabiliriz.
   const baseClasses = `
-    relative
-    pb-1
-    hover:text-primary
-    after:content-['']
-    after:absolute
-    after:bottom-0
-    after:left-0
-    after:h-[2px]
-    after:bg-black
-    after:transition-width
-    after:duration-300
+   relative
+  inline-flex
+  pb-4
+  hover:text-primary
+  after:content-['']
+  after:absolute
+  after:bottom-0
+  after:left-1/2
+  after:-translate-x-1/2
+  after:h-[2.5px]
+  after:bg-black
+  after:transition-all
+  after:duration-300
   `;
 
   return (
-    <nav className="flex overflow-x-auto space-x-4 py-4 text-md items-center justify-evenly">
+    <nav className="flex overflow-x-auto pt-4 text-md items-center justify-evenly">
       <NavLink
         to="/giyim"
         className={({ isActive }) =>
           isActive
             ? // Aktif link
-              `${baseClasses} after:w-full`
+              `${baseClasses} after:w-[50%]`
             : // Pasif link
-              `${baseClasses} after:w-0 hover:after:w-full`
+              `${baseClasses} after:w-0 hover:after:w-[50%]`
         }
       >
         Giyim
@@ -35,8 +37,8 @@ export default function CategoriesNav() {
         to="/canta"
         className={({ isActive }) =>
           isActive
-            ? `${baseClasses} after:w-full`
-            : `${baseClasses} after:w-0 hover:after:w-full`
+            ? `${baseClasses} after:w-24`
+            : `${baseClasses} after:w-0 hover:after:w-24`
         }
       >
         Çanta
@@ -46,8 +48,8 @@ export default function CategoriesNav() {
         to="/ayakkabi"
         className={({ isActive }) =>
           isActive
-            ? `${baseClasses} after:w-full`
-            : `${baseClasses} after:w-0 hover:after:w-full`
+            ? `${baseClasses} after:w-24`
+            : `${baseClasses} after:w-0 hover:after:w-24`
         }
       >
         Ayakkabı
@@ -57,8 +59,8 @@ export default function CategoriesNav() {
         to="/aksesuar"
         className={({ isActive }) =>
           isActive
-            ? `${baseClasses} after:w-full`
-            : `${baseClasses} after:w-0 hover:after:w-full`
+            ? `${baseClasses} after:w-24`
+            : `${baseClasses} after:w-0 hover:after:w-24`
         }
       >
         Aksesuar
@@ -68,8 +70,8 @@ export default function CategoriesNav() {
         to="/cok-satanlar"
         className={({ isActive }) =>
           isActive
-            ? `${baseClasses} after:w-full`
-            : `${baseClasses} after:w-0 hover:after:w-full`
+            ? `${baseClasses} after:w-24`
+            : `${baseClasses} after:w-0 hover:after:w-24`
         }
       >
         Çok Satanlar
@@ -79,8 +81,8 @@ export default function CategoriesNav() {
         to="/en-yeniler"
         className={({ isActive }) =>
           isActive
-            ? `${baseClasses} after:w-full`
-            : `${baseClasses} after:w-0 hover:after:w-full`
+            ? `${baseClasses} after:w-24`
+            : `${baseClasses} after:w-0 hover:after:w-24`
         }
 >
         En Yeniler
@@ -90,8 +92,8 @@ export default function CategoriesNav() {
         to="/outlet"
         className={({ isActive }) =>
           isActive
-            ? `${baseClasses} after:w-full`
-            : `${baseClasses} after:w-0 hover:after:w-full`
+            ? `${baseClasses} after:w-24`
+            : `${baseClasses} after:w-0 hover:after:w-24`
         }
       >
         Outlet
@@ -101,8 +103,8 @@ export default function CategoriesNav() {
         to="/reborn"
         className={({ isActive }) =>
           isActive
-            ? `${baseClasses} after:w-full`
-            : `${baseClasses} after:w-0 hover:after:w-full`
+            ? `${baseClasses} after:w-24`
+            : `${baseClasses} after:w-0 hover:after:w-24`
         }
       >
         Reborn

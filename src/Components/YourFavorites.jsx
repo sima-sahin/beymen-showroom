@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 
 const YourFavorites = () => {
-    const { wishlist, addToCart, removeFromCart, removeFromWishlist } = useCartStore();
+    const { wishlist, moveToCart, removeFromWishlist } = useCartStore();
 
     const latestWishlistItems = [...wishlist].reverse().slice(0, 5);
 
@@ -17,13 +17,7 @@ const YourFavorites = () => {
       };
     
       const handleAddToCart = (product) => {
-        const sizeToAdd = selectedSize || (product.size.length > 0 ? product.size[0] : null);
-        if (!sizeToAdd) {
-        //   alert("Lütfen bir beden seçin!");
-          return;
-        }
-        addToCart({ ...product, selectedSize: sizeToAdd });
-        // removeFromCart(product.id, product.selectedSize);
+        moveToCart(product, selectedSize);
       };
 
   return (
