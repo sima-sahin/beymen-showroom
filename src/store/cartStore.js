@@ -111,7 +111,7 @@ const useCartStore = create(
           get().wishlist.some((item) => item.id === productId),
     }),
     {
-      name: "cart-storage",
+      name: "cart-storage-beymen",
       storage: createJSONStorage(() => localStorage),
       version: 2, // Sürüm kontrol
       migrate: (persistedState, version) => {
