@@ -1,12 +1,42 @@
-# React + Vite
+# 🧥 Beymen Showroom – Fashion Collection UI E-Commerce Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A sleek, modern React-based UI project designed to showcase a luxury fashion collection in the style of **Beymen**. The interface emphasizes clean visuals, responsiveness, and a premium feel — perfect for concept presentations and showroom-style galleries.
 
-Currently, two official plugins are available:
+---
+https://beymen.netlify.app/
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## ✨ Features
 
-## Expanding the ESLint configuration
+- 🖼️ Full-screen fashion gallery layout
+- 🧭 Minimal, stylish navigation
+- 🎨 Brand-oriented color palette
+- 🖱️ Smooth scroll & hover animations
+- 📱 Responsive design for all screen sizes
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 🛠️ Tech Stack
+
+- **React.js**
+- **Tailwind CSS** – Utility-first styling
+- **Framer Motion** – Elegant animations
+- **Vite** – Lightning-fast development tooling
+
+---
+
+## 🚀 Getting Started
+
+To run the project locally:
+
+```bash
+# Clone the repository
+git clone https://github.com/sima-sahin/beymen-showroom.git
+cd beymen-showroom
+
+# Install dependencies
+npm install
+
+# Start the development server
+npm run dev
+
